@@ -1,4 +1,4 @@
-package com.kenova.daraja.mpesa.interceptor;
+package com.kenova.mpesa.mpesa.interceptor;
 
 /**
  * Created by Aaron at 6/27/2020

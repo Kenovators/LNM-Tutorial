@@ -1,4 +1,4 @@
-package com.kenova.daraja;
+package com.kenova.mpesa;
 
 import org.junit.Test;
 

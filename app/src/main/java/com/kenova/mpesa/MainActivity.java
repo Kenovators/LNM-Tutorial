@@ -1,4 +1,4 @@
-package com.kenova.daraja;
+package com.kenova.mpesa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.kenova.daraja.mpesa.ApiClient;
-import com.kenova.daraja.mpesa.model.AccessToken;
+import com.kenova.mpesa.mpesa.ApiClient;
+import com.kenova.mpesa.mpesa.model.AccessToken;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

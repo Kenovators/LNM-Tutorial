@@ -1,4 +1,4 @@
-package com.kenova.daraja;
+package com.kenova.mpesa;
 
 /**
  * Created by Aaron at 6/27/2020
