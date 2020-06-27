@@ -4,9 +4,10 @@ import android.util.Base64;
 
 import androidx.annotation.NonNull;
 
+import com.kenova.mpesa.BuildConfig;
+
 import java.io.IOException;
 
-import butterknife.BuildConfig;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
