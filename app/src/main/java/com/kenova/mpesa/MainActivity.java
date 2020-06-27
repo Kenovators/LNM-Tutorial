@@ -21,6 +21,12 @@ import retrofit2.Call;
 import retrofit2.Response;
 import timber.log.Timber;
 
+import static com.kenova.mpesa.AppConstants.BUSINESS_SHORT_CODE;
+import static com.kenova.mpesa.AppConstants.CALLBACKURL;
+import static com.kenova.mpesa.AppConstants.PARTYB;
+import static com.kenova.mpesa.AppConstants.PASSKEY;
+import static com.kenova.mpesa.AppConstants.TRANSACTION_TYPE;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 	
 	@BindView(R.id.etAmount)
