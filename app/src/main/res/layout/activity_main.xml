@@ -29,6 +29,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200dp"
         android:gravity="center"
+        android:imeOptions="actionNext"
+        android:inputType="phone"
         />
 
     <EditText
@@ -39,7 +41,9 @@
         android:gravity="center"
         android:hint="Enter Amount"
         app:layout_constraintTop_toBottomOf="@+id/etPhone"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        android:imeOptions="actionDone"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/btnPay"
