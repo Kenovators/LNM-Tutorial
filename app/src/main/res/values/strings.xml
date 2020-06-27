@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Daraja Tutorial</string>
+    <string name="fill_out_the_details_below_and_submit_to_initiate_stk_push">Fill out the details below and submit to initiate STK Push</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
 </resources>

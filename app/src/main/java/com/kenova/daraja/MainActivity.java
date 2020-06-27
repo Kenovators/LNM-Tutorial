@@ -3,8 +3,15 @@ package com.kenova.daraja;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.net.DnsResolver;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.kenova.daraja.mpesa.ApiClient;
+import com.kenova.daraja.mpesa.model.AccessToken;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -13,8 +20,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.etAmount)
     EditText mAmount;
-    @BindView(R.id.etPhone)EditText mPhone;
-    @BindView(R.id.btnPay)Button mPay;
+    @BindView(R.id.etPhone)
+    EditText mPhone;
+    @BindView(R.id.btnPay)
+    Button mPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void getAccessToken() {
         mApiClient.setGetAccessToken(true);
-        mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
+        mApiClient.mpesaService().getAccessToken().enqueue(new DnsResolver.Callback<AccessToken>() {
         @Override
         public void onResponse(@NonNull Call<AccessToken> call, @NonNull Response<AccessToken> response) {
 
