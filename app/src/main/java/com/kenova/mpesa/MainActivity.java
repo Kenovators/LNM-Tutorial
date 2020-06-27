@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.net.DnsResolver;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import com.kenova.mpesa.mpesa.model.STKPush;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
@@ -29,14 +29,13 @@ import static com.kenova.mpesa.AppConstants.TRANSACTION_TYPE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 	
-	@BindView(R.id.etAmount)
-	EditText mAmount;
-	@BindView(R.id.etPhone)
-	EditText mPhone;
-	@BindView(R.id.btnPay)
-	Button mPay;
 	private ApiClient mApiClient;
 	private ProgressDialog mProgressDialog;
+	
+	@BindView(R.id.etAmount)
+	EditText mAmount;
+	@BindView(R.id.etPhone)EditText mPhone;
+	@BindView(R.id.btnPay)Button mPay;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	
 	public void getAccessToken() {
 		mApiClient.setGetAccessToken(true);
-		mApiClient.mpesaService().getAccessToken().enqueue(new DnsResolver.Callback<AccessToken>() {
+		mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
 			@Override
 			public void onResponse(@NonNull Call<AccessToken> call, @NonNull Response<AccessToken> response) {
 				
@@ -76,15 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	// The amount can also be passed in from the price of a product for example, if you were integrating an online shop.
 	@Override
 	public void onClick(View view) {
-		if (view == mPay) {
+		if (view== mPay){
 			String phone_number = mPhone.getText().toString();
 			String amount = mAmount.getText().toString();
-			performSTKPush(phone_number, amount);
+			performSTKPush(phone_number,amount);
 		}
 	}
 	
 	//These are the same details that we were setting when we introduced ourselves to the MPesa Daraja API.
-	public void performSTKPush(String phone_number, String amount) {
+	public void performSTKPush(String phone_number,String amount) {
 		mProgressDialog.setMessage("Processing your request");
 		mProgressDialog.setTitle("Please Wait...");
 		mProgressDialog.setIndeterminate(true);
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		mApiClient.setGetAccessToken(false);
 		
 		//Sending the data to the Mpesa API, remember to remove the logging when in production.
-		mApiClient.mpesaService().sendPush(stkPush).enqueue(new DnsResolver.Callback<STKPush>() {
+		mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
 			@Override
 			public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
 				mProgressDialog.dismiss();
