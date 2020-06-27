@@ -9,7 +9,7 @@ import java.io.IOException;
 import butterknife.BuildConfig;
 import okhttp3.Interceptor;
 import okhttp3.Request;
-import retrofit2.Response;
+import okhttp3.Response;
 
 /**
  * Created by Aaron at 6/27/2020
