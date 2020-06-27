@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.kenova.mpesa.mpesa.ApiClient;
+import com.kenova.mpesa.mpesa.Utils;
 import com.kenova.mpesa.mpesa.model.AccessToken;
+import com.kenova.mpesa.mpesa.model.STKPush;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mApiClient.setGetAccessToken(false);
 
         //Sending the data to the Mpesa API, remember to remove the logging when in production.
-        mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
+        mApiClient.mpesaService().sendPush(stkPush).enqueue(new DnsResolver.Callback<STKPush>() {
             @Override
             public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
                 mProgressDialog.dismiss();
