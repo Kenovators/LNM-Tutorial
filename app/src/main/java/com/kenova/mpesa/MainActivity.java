@@ -100,12 +100,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				Utils.sanitizePhoneNumber(phone_number),
 				CALLBACKURL,
 				"test", //The account reference
-				"test"  //The transaction description
+				"test"  //The transaction description. Refer to the callback or safaricom docs
 		);
 		
 		mApiClient.setGetAccessToken(false);
 		
 		//Sending the data to the Mpesa API, remember to remove the logging when in production.
+                //This mpesa API uses your callback url to fetch resultsbof the transaction. Make sure you fill it out. You can check out our other callback url repo for help.
 		mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
 			@Override
 			public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
